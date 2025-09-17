@@ -1,15 +1,21 @@
-import { Card } from '@/components/Card';
-import { fetchItems } from '@/services/fetchItems';
+'use client';
 
-export default async function Home() {
-  const items = await fetchItems();
+import { useState } from 'react';
+import { coffeeItems } from '@/data/sampleData';
+
+import { Navigation } from '@/components/Navigation';
+import { HeroSection } from '@/components/HeroSection';
+import { MainSection} from '@/components/MainSection';
+import { Footer } from '@/components/Footer';
+
+export default function Home() {
 
   return (
-    <main className='mx-10 mt-12 px-10'>
-      <h1 className='text-3xl mb-10'>You&apos;ve got this! 🚀</h1>
-      {items.map(({ id, title, description }) => (
-        <Card key={id} title={title} description={description} />
-      ))}
-    </main>
+    <div className="min-h-screen bg-bg text-text">
+      <Navigation />
+      <HeroSection />
+      <MainSection />
+      <Footer />
+    </div>
   );
 }

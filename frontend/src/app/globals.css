@@ -1,1 +1,26 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
 @import 'tailwindcss';
+
+@theme {
+    --font-fallback: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-primary: 'Bebas Neue';
+    --font-secondary: 'Poppins';
+    --font-tertiary: 'DM Sans';
+
+    --color-bg: #101011;
+    --color-bg-alt: #191919;
+    --color-text: #FFFFFF;
+    --color-muted: #938E8E;
+    --color-muted-alt: #909090;
+    --color-accent: #BA8039;
+    --color-accent-muted: #D3AD7F;
+    --color-accent2: #77A9B0;
+    --color-accent3: #3A383D;
+}
+
+html {
+  font-family: 'Poppins', var(--font-fallback);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
