@@ -16,6 +16,11 @@
     --color-accent-muted: #D3AD7F;
     --color-accent2: #77A9B0;
     --color-accent3: #3A383D;
+
+    --color-error: #FF4949;
+    --color-error-muted: #FFB3B3;
+
+    --color-input: #2D2D2D;
 }
 
 html {
