@@ -1,4 +1,5 @@
 import { BeansScatter } from "./BeansScatter";
+import { Logo } from "./icons";
 
 export const Footer = () => {
   return (
@@ -7,7 +8,7 @@ export const Footer = () => {
       <BeansScatter />
 
       <div className="relative z-10 max-w-6xl max-h-80 mx-auto my-40 text-center">
-        <h1 className="text-6xl font-bold">MVST Coffee</h1>
+        <Logo className="w-64 md:w-96 h-12 mx-auto mb-6" />
       </div>
     </footer>
   );

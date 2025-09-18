@@ -29,3 +29,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+html, body {
+  overflow-x: hidden;
+}

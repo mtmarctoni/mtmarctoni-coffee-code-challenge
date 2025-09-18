@@ -38,3 +38,4 @@ export const CoffeeCategory = CoffeeCategorySchema.Enum;
 export type CoffeeCategoryType = z.infer<typeof CoffeeCategorySchema>;
 export type CreateCoffeeItem = z.infer<typeof CreateCoffeeItemSchema>;
 export type CoffeeItem = z.infer<typeof CoffeeItemSchema>;
+export type FilterType = CoffeeCategoryType | "all";

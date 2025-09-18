@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Logo } from "./icons";
 
 export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,21 +21,21 @@ export const Navigation = () => {
   return (
       <nav
         className={
-          "fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 md:px-8 py-4 md:py-6 transition-all duration-300 ease-out " +
+          "fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 md:py-8 transition-all duration-300 ease-out gap-4 " +
           (scrolled
-            ? "backdrop-blur-sm bg-bg shadow-sm"
-            : "bg-transparent")
+            ? "backdrop-blur-sm bg-bg shadow-sm py-2"
+            : "bg-transparent py-8")
         }
-      >
-        <div className="text-text font-bold text-xl">
-          MVST Coffee
+    >
+        <div className="text-text md:ml-50 transition-all duration-300 ease-out">
+          <Logo className="w-48 h-12" />
         </div>
 
       <Link
         href="/create"
-        className="bg-accent text-text px-5 py-2 rounded-full text-sm hover:bg-accent/50 transition-colors"
+        className="flex items-center justify-center w-[115px] h-[45px] bg-accent text-center text-text px-8 py-3.5 rounded-4xl text-sm hover:bg-accent/50 transition-colors"
       >
-        Create
+   Create
       </Link>
     </nav>
   );

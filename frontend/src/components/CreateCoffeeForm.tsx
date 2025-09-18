@@ -12,32 +12,34 @@ import { initialCoffeeValues, ERROR_TTL } from "@/app/config";
 import { useField } from "../hooks/useField";
 
 export default function CreateCoffeeForm(): JSX.Element {
-    const router = useRouter();
-    
-    const title = useField<string>(initialCoffeeValues.title);
-    const description = useField<string>(initialCoffeeValues.description);
-    const price = useField<number>(initialCoffeeValues.price);
-    const imageUrl = useField<string>(initialCoffeeValues.imageUrl);
+  const router = useRouter();
 
-  const [category, setCategory] = useState<CoffeeCategoryType>(initialCoffeeValues.category);
+  const title = useField<string>(initialCoffeeValues.title);
+  const description = useField<string>(initialCoffeeValues.description);
+  const price = useField<number>(initialCoffeeValues.price);
+  const imageUrl = useField<string>(initialCoffeeValues.imageUrl);
+
+  const [category, setCategory] = useState<CoffeeCategoryType>(
+    initialCoffeeValues.category
+  );
   const [apiError, setApiError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-    // useEffect to show the error only 5 seconds
-    useEffect(() => {
-        if (fieldErrors) {
-            const timer = setTimeout(() => {
-                setFieldErrors({});
-            }, ERROR_TTL);
-            return () => clearTimeout(timer);
-        }
-    }, [fieldErrors]);
+  // useEffect to show the error only 5 seconds
+  useEffect(() => {
+    if (fieldErrors) {
+      const timer = setTimeout(() => {
+        setFieldErrors({});
+      }, ERROR_TTL);
+      return () => clearTimeout(timer);
+    }
+  }, [fieldErrors]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setApiError(null);
     setFieldErrors({});
-    
+
     // Build payload from useField values
     const payload = {
       title: title.value,
@@ -82,12 +84,15 @@ export default function CreateCoffeeForm(): JSX.Element {
         duration={5000}
       />
 
-      <form onSubmit={submit} className="w-full px-0 py-8 space-y-4">
+      <form onSubmit={submit} className="w-full px-0 pt-8 md:py-8 space-y-4">
         {/* Field validation errors only */}
         {Object.keys(fieldErrors).length > 0 && (
           <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 space-y-2">
             {Object.entries(fieldErrors).map(([field, message]) => (
-              <div key={field} className="flex items-center gap-2 text-error text-sm">
+              <div
+                key={field}
+                className="flex items-center gap-2 text-error text-sm"
+              >
                 <ErrorIcon className="w-4 h-4 text-error" />
                 <span className="capitalize">{field}:</span>
                 <span>{message}</span>
@@ -96,65 +101,65 @@ export default function CreateCoffeeForm(): JSX.Element {
           </div>
         )}
 
-      <div className="flex items-start gap-4 w-full">
-        <div className="flex-1">
-          <InputField 
-            label="Name" 
-            placeholder="Name your coffee here" 
-            value={title.value} 
-            onChange={title.onChange} 
-            required 
-          />
+        <div className="flex items-start gap-4 w-full">
+          <div className="flex-1">
+            <InputField
+              label="Name"
+              placeholder="Name your coffee here"
+              value={title.value}
+              onChange={title.onChange}
+              required
+            />
+          </div>
+
+          <div className="w-28 flex-shrink-0">
+            <InputField
+              label="Price"
+              placeholder="0.00"
+              value={price.value}
+              onChange={price.onChange}
+              type="number"
+              rightSymbol="€"
+              required
+            />
+          </div>
         </div>
 
-        <div className="w-28 flex-shrink-0">
-          <InputField 
-            label="Price" 
-            placeholder="0.00" 
-            value={price.value} 
-            onChange={price.onChange} 
-            type="number" 
-            rightSymbol="€" 
-            required 
-          />
+        <CategoryToggle value={category} onChange={setCategory} />
+
+        <InputField
+          label="Upload image"
+          placeholder="Paste image URL here"
+          value={imageUrl.value}
+          onChange={imageUrl.onChange}
+          required
+        />
+
+        <InputField
+          label="Description"
+          placeholder="Add a description"
+          value={description.value}
+          onChange={description.onChange}
+          type="textarea"
+        />
+        <div className="h-10 md:h-0"></div>
+        <div className="flex md:flex-row flex-col items-center justify-center gap-6 mt-2">
+          <button
+            type="button"
+            className="px-6 py-2 w-full md:w-auto rounded-full text-sm border border-accent text-text bg-transparent hover:bg-accent/10"
+            onClick={onDiscard}
+          >
+            Discard
+          </button>
+
+          <button
+            type="submit"
+            className="px-6 py-2 w-full md:w-auto rounded-full text-sm font-semibold hover:text-muted hover:bg-accent/50 bg-accent text-text"
+          >
+            Confirm
+          </button>
         </div>
-      </div>
-
-      <CategoryToggle value={category} onChange={setCategory} />
-
-  <InputField 
-    label="Upload image" 
-    placeholder="Paste image URL here" 
-    value={imageUrl.value} 
-    onChange={imageUrl.onChange} 
-    required 
-  />
-
-  <InputField 
-    label="Description" 
-    placeholder="Add a description" 
-    value={description.value} 
-    onChange={description.onChange} 
-    type="textarea" 
-  />
-
-      <div className="flex items-center justify-center gap-6 mt-2">
-        <button
-          type="button"
-          className="px-6 py-2 rounded-full text-sm border border-accent text-text bg-transparent hover:bg-accent/10"
-          onClick={onDiscard}
-        >
-          Discard
-        </button>
-
-        <button
-          type="submit"
-                      className="px-6 py-2 rounded-full text-sm font-semibold text-muted bg-accent/50 hover:bg-accent hover:text-text"
-        >
-          Confirm
-        </button>
-      </div>
-    </form>
+      </form>
     </>
   );
 }

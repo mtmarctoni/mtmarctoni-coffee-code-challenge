@@ -1,14 +1,16 @@
 import React, { useMemo } from 'react'
+import type { CoffeeCategoryType, FilterType } from '@/types/Item'
+import { CoffeeCategory } from '@/types/Item'
 
 type Props = {
-  filter: string
-  setFilter: (f: string) => void
+  filter: FilterType
+  setFilter: (f: FilterType) => void
 }
 
-const FILTERS = [
+// Build filters from the Zod enum so adding categories is automatic
+const FILTERS: { key: FilterType; label: string }[] = [
   { key: 'all', label: 'All' },
-  { key: 'robusta', label: 'Robusta' },
-  { key: 'arabica', label: 'Arabica' },
+  ...Object.values(CoffeeCategory).map((k) => ({ key: k as CoffeeCategoryType, label: k.charAt(0).toUpperCase() + k.slice(1) })),
 ]
 
 export function CoffeeFilter({ filter, setFilter }: Props) {
@@ -16,14 +18,15 @@ export function CoffeeFilter({ filter, setFilter }: Props) {
 
   return (
     <div className="mt-6 flex justify-center">
-      <div className="relative inline-flex items-center bg-accent3 rounded-full shadow-sm w-full max-w-[548px] ">
-        {/* sliding white indicator. We assume equal-width segments so we use translateX by percentage */}
+      <div className="relative inline-flex items-center bg-accent3 rounded-full shadow-sm w-full max-w-[548px]">
+        {/* sliding white indicator. Width and translate are computed from FILTERS.length so it's adaptive */}
         <div
           aria-hidden
-          className="absolute top-0 bottom-0 left-0 w-[calc(100%/3)] bg-white rounded-full transition-transform duration-300 ease-in-out"
-          style={{ transform: `translateX(${Math.max(0, activeIndex) * 100}%)` }}
+          className="absolute top-0 bottom-0 left-0 bg-white rounded-full transition-transform duration-300 ease-in-out"
+          style={{ width: `${100 / FILTERS.length}%`, transform: `translateX(${Math.max(0, activeIndex) * 100}%)` }}
         />
 
+          <div className="flex flex-row z-10 justify-between relative w-full">
         {FILTERS.map((f) => {
           const active = filter === f.key
           return (
@@ -31,7 +34,7 @@ export function CoffeeFilter({ filter, setFilter }: Props) {
               key={f.key}
               onClick={() => setFilter(f.key)}
               aria-pressed={active}
-              className={`flex-1 relative z-10 px-12 py-3 text-sm font-medium text-center transition-colors duration-150 focus:outline-none ${
+              className={`text-center w-full py-3 text-sm font-medium transition-colors duration-150 focus:outline-none cursor-pointer ${
                 active ? 'text-bg' : 'text-text'
               }`}
             >
@@ -39,6 +42,7 @@ export function CoffeeFilter({ filter, setFilter }: Props) {
             </button>
           )
         })}
+          </div>
       </div>
     </div>
   )
