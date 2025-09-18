@@ -68,4 +68,3 @@ export const BeansScatter: React.FC<Props> = ({
   );
 };
 
-export default BeansScatter;

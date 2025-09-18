@@ -1,4 +1,4 @@
-import BeansScatter from "./BeansScatter";
+import { BeansScatter } from "./BeansScatter";
 
 export const Footer = () => {
   return (
