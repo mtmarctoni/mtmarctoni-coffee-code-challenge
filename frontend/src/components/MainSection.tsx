@@ -2,11 +2,11 @@
  * MainSection component
  * Usage: import MainSection from '@/components/MainSection' and add to `page.tsx`.
  */
-import React, { useState } from 'react'
-import { coffeeItems } from '@/data/sampleData'
+import React, { useState, useEffect } from 'react'
 import { CoffeeItem } from '@/types/Item'
 import { CoffeeGrid } from '@/components/CoffeeGrid'
 import { CoffeeFilter } from '@/components/CoffeeFilter'
+import { fetchItems, createCoffee } from '@/services/coffeeApi'
 
 const FILTERS = [
   { key: 'all', label: 'All' },
@@ -16,11 +16,19 @@ const FILTERS = [
 
 export function MainSection() {
   const [filter, setFilter] = useState<string>('all')
+  const [items, setItems] = useState<CoffeeItem[]>([])
+
+  useEffect(() => {
+    fetchItems()
+      .then(setItems)
+      .catch((err) => console.error('Fetch coffees failed', err))
+  }, [])
 
   const itemsToShow: CoffeeItem[] =
-    filter === 'all'
-      ? coffeeItems
-      : coffeeItems.filter((c) => c.category === filter)
+    filter === 'all' ? items : items.filter((c) => c.category === filter)
+
+  // form state
+
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
@@ -31,8 +39,7 @@ export function MainSection() {
         <CoffeeFilter filter={filter} setFilter={setFilter} />
       </div>
           
-      <CoffeeGrid items={itemsToShow} />
-
+        <CoffeeGrid items={itemsToShow} />
       
     </main>
   )
