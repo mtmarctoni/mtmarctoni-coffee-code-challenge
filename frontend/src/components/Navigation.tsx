@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,9 +30,12 @@ export const Navigation = () => {
           MVST Coffee
         </div>
 
-        <button className="bg-accent text-text px-5 py-2 rounded-full text-sm hover:bg-accent/50 transition-colors">
-          Contact
-        </button>
-      </nav>
+      <Link
+        href="/create"
+        className="bg-accent text-text px-5 py-2 rounded-full text-sm hover:bg-accent/50 transition-colors"
+      >
+        Create
+      </Link>
+    </nav>
   );
 };
