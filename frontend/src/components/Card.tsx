@@ -13,7 +13,7 @@ type Props = {
 export const Card = ({
   title,
   description,
-  imageUrl = '/cappucino.webp',
+  imageUrl = '/latte.webp',
   price,
   tag,
 }: Props) => {
@@ -30,13 +30,15 @@ export const Card = ({
 
       <div className="flex flex-col items-center text-center p-10">
         {/* decorative image */}
+        <div className="w-full max-w-xs aspect-square relative overflow-hidden rounded-lg">
         <Image 
           src={imageUrl}
           alt={title}
-          width={289}
-          height={216}
-          className="object-contain h-54 drop-shadow-2xl"
-        />
+          fill
+          sizes='160px'
+          className="object-contain drop-shadow-xl"
+          />
+        </div>
 
         <div className="flex flex-col gap-2 h-24 mt-6">
         <h3 className="text-lg font-semibold text-accent-muted">{title}</h3>
