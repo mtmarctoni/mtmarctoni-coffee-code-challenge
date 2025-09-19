@@ -7,9 +7,9 @@ export const initialConfig = {
 };
 
 export const initialCoffeeValues = {
-  title: "Latte",
+  title: "",
   description: "Free in the MVST office",
   price: 5,
-  imageUrl: "/latte.webp",
+  imageUrl: "",
   category: CoffeeCategory.arabica,
 } as const;

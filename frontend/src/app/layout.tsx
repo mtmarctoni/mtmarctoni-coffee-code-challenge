@@ -99,7 +99,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`bg-bg text-text`}>{children}</body>
+      <body className={`bg-bg text-text`}>
+        {children}
+      </body>
     </html>
   )
 }

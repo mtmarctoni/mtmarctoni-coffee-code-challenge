@@ -56,8 +56,11 @@ export default function InputField(props: Props) {
     }
   };
 
-  const inputClassName = `w-full box-border bg-input border border-muted rounded-lg px-4 py-3 text-sm text-text placeholder:text-muted`;
-  
+  // Conditionally set border color if value is present
+  const hasValue = type === "number" ? value !== 0 : value !== "";
+  const borderColorClass = hasValue ? "border-text" : "border-muted";
+  const inputClassName = `w-full box-border bg-input border ${borderColorClass} rounded-lg px-4 py-3 text-sm text-text placeholder:text-muted focus:outline-none focus:ring-accent focus:border-accent transition-all duration-300`;
+
   // Additional classes to hide number input spinners
   const numberInputClassName = type === "number" 
     ? `${inputClassName} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`
@@ -86,7 +89,7 @@ export default function InputField(props: Props) {
                           
           />
           {rightSymbol && (
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted text-sm">{rightSymbol}</span>
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text text-sm">{rightSymbol}</span>
           )}
         </div>
       )}
