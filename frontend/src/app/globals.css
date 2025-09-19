@@ -19,6 +19,10 @@
 
     --color-error: #FF4949;
     --color-error-muted: #FFB3B3;
+    --color-warning: #FFA500;
+    --color-warning-muted: #FFD580;
+    --color-info: #3B82F6;
+    --color-info-muted: #93C5FD;
 
     --color-input: #2D2D2D;
 }

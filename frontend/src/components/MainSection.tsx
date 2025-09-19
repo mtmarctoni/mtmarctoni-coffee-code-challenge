@@ -1,28 +1,27 @@
-/**
- * MainSection component
- * Usage: import MainSection from '@/components/MainSection' and add to `page.tsx`.
- */
-import React, { useState, useEffect } from 'react'
+"use client";
+
+import { useEffect, useState } from 'react'
 import { FilterType, CoffeeItem } from '@/types/Item'
 import { CoffeeGrid } from '@/components/CoffeeGrid'
 import { CoffeeFilter } from '@/components/CoffeeFilter'
-import { fetchItems } from '@/services/coffeeApi'
+import Toast from '@/components/Toast';
 
-export function MainSection() {
+interface Props {
+  items: CoffeeItem[];
+  error: string | null;
+
+}
+
+export function MainSection({ items, error }: Props) {
   const [filter, setFilter] = useState<FilterType>('all')
-  const [items, setItems] = useState<CoffeeItem[]>([])
+  const [errorMsg, setErrorMsg] = useState<string | null>(error);
 
   useEffect(() => {
-    fetchItems()
-      .then(setItems)
-      .catch((err) => console.error('Fetch coffees failed', err))
-  }, [])
+    setErrorMsg(error);
+  }, [error]);
 
   const itemsToShow: CoffeeItem[] =
     filter === 'all' ? items : items.filter((c) => c.category === filter)
-
-  // form state
-
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
@@ -32,8 +31,8 @@ export function MainSection() {
         </h2>
         <CoffeeFilter filter={filter} setFilter={setFilter} />
       </div>
-          
-        <CoffeeGrid items={itemsToShow} />
+      <Toast message={errorMsg ?? "Unknown error"} isVisible={!!errorMsg} onClose={() => setErrorMsg(null)} type="warning" />
+      <CoffeeGrid items={itemsToShow} />
       
     </main>
   )

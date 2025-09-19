@@ -81,7 +81,6 @@ export default function CreateCoffeeForm(): JSX.Element {
         message={apiError || ""}
         isVisible={!!apiError}
         onClose={() => setApiError(null)}
-        duration={5000}
       />
 
       <form onSubmit={submit} className="w-full px-0 pt-8 md:py-8 space-y-4">
