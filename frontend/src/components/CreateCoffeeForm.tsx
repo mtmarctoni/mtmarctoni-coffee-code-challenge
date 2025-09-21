@@ -67,6 +67,7 @@ export default function CreateCoffeeForm(): JSX.Element {
     try {
       await createCoffee(payload);
       router.push("/");
+      router.refresh();
     } catch (err: any) {
       setApiError(err?.message || "Failed to create coffee");
     } finally {

@@ -1,9 +1,12 @@
+import { apiBaseUrl } from "@/app/config";
 import { CoffeeItem } from "@/types/Item";
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
+const API = apiBaseUrl;
 
 export const fetchItems = async (): Promise<CoffeeItem[]> => {
-  const res = await fetch(`${API}/coffees`);
+  const res = await fetch(`${API}/coffees`, {
+    cache: "no-store",
+  });
   if (!res.ok) throw new Error("Failed to fetch coffees");
   return res.json();
 };

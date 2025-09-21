@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import { MainSection} from '@/components/MainSection';
@@ -11,6 +13,7 @@ export default async function Home() {
 
   try {
     items = await fetchItems();
+    console.log('Fetched coffee items:', items);
   } catch (err) {
     console.error('Failed to fetch coffee items:', err);
     
