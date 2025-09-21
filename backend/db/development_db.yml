@@ -19,3 +19,22 @@ services:
       default:
         aliases:
           - postgres.service
+
+  mvst-coffee-challange-database-test:
+    container_name: mvst-coffee-challenge-database-test
+    image: postgres
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_DB: 'mvst-coffee-challenge-db-test'
+      POSTGRES_PASSWORD: '1234'
+      POSTGRES_USER: 'postgres'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      default:
+        aliases:
+          - postgres.service.test

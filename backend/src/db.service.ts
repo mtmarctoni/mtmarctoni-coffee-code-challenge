@@ -26,6 +26,7 @@ export class DbService implements OnModuleInit {
           process.env.NODE_ENV === 'production'
             ? { rejectUnauthorized: false }
             : false,
+        database: process.env.POSTGRES_DB ?? 'mvst-coffee-challenge-db',
       });
     } else {
       // Development: use individual variables
@@ -41,7 +42,10 @@ export class DbService implements OnModuleInit {
 
   async onModuleInit() {
     await this.createTable();
-    this.logger.log('DB initialized');
+    this.logger.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+    this.logger.log(
+      `DB initialized: ${this.pool.options.database ?? 'unknown'}`,
+    );
   }
 
   async query<T = any>(text: string, params?: any[]) {
@@ -68,5 +72,9 @@ export class DbService implements OnModuleInit {
       );
     `;
     await this.query(sql);
+  }
+
+  async closePool() {
+    await this.pool.end();
   }
 }
