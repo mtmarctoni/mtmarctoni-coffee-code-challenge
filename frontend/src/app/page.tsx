@@ -13,17 +13,12 @@ export default async function Home() {
 
   try {
     items = await fetchItems();
-    console.log('Fetched coffee items:', items);
   } catch (err) {
-    console.error('Failed to fetch coffee items:', err);
-    
-    // try to load fallback sample data
     try {
       const { coffeeItems } = await import('@/data/sampleData');
       items = coffeeItems;
       error = 'Using sample data. Some features may be limited.';
     } catch (fallbackErr) {
-      console.error('Failed to load fallback data:', fallbackErr);
       items = [];
       error = 'Unable to load coffee items. Please try again later.';
     }

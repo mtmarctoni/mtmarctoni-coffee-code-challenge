@@ -18,8 +18,6 @@ export const createCoffee = async (payload: Partial<CoffeeItem>) => {
     body: JSON.stringify(payload),
   });
 
-  console.log("createCoffee response", res);
-
   const text = await res.text();
   let parsed: any = null;
   try {
