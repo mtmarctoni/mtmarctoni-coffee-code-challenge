@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, Variants } from 'framer-motion'
 
-import {Card} from '@/components/Card'
+import {Card} from '@/components/coffee/Card'
 import { CoffeeItem } from '@/types/Item'
 
 interface Props {

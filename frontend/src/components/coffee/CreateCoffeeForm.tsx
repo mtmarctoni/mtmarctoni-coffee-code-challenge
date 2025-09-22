@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createCoffee } from "@/services/coffeeApi";
 import { useRouter } from "next/navigation";
-import InputField from "@/components/InputField";
-import CategoryToggle from "@/components/CategoryToggle";
-import Toast from "@/components/Toast";
+import InputField from "@/components/ui/InputField";
+import CategoryToggle from "@/components/ui/CategoryToggle";
+import Toast from "@/components/ui/Toast";
 import { ErrorIcon } from "@/components/icons";
 import { CoffeeCategoryType, CreateCoffeeItemSchema } from "@/types/Item";
 import { initialCoffeeValues, ERROR_TTL } from "@/app/config";
-import { useField } from "../hooks/useField";
+import { useField } from "@/hooks/useField";
 
 export default function CreateCoffeeForm(): JSX.Element {
   const router = useRouter();

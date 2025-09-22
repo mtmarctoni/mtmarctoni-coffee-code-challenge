@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Logo } from "./icons";
+import { Logo } from "../icons";
 
 export const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);

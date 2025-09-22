@@ -1,9 +1,9 @@
 export const dynamic = "force-dynamic";
 
-import { Navigation } from '@/components/Navigation';
-import { HeroSection } from '@/components/HeroSection';
-import { MainSection} from '@/components/MainSection';
-import { Footer } from '@/components/Footer';
+import { Navigation } from '@/components/sections/Navigation';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { MainSection} from '@/components/sections/MainSection';
+import { Footer } from '@/components/sections/Footer';
 import { fetchItems } from '@/services/coffeeApi';
 import { CoffeeItem } from '@/types/Item';
 

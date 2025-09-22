@@ -1,7 +1,7 @@
 "use client";
 
-import Dialog from "@/components/Dialog";
-import CreateCoffeeForm from "@/components/CreateCoffeeForm";
+import Dialog from "@/components/ui/Dialog";
+import CreateCoffeeForm from "@/components/coffee/CreateCoffeeForm";
 
 export default function Page() {
 

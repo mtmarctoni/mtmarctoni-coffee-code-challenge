@@ -48,7 +48,7 @@ export const HeroSection = () => {
         }}
       />
 
-      <div className="relative z-10 flex flex-col md:items-start items-center justify-center px-6 py-16 min-h-[calc(100vh-100px)]">
+      <div className="relative z-10 flex flex-col md:items-start items-center justify-center px-6 py-16 min-h-dvh">
         <div className="max-w-2xl px-25 md:px-0 md:ml-50 text-center md:text-left">
           <motion.h1 
             className="font-primary text-[64px] md:text-[130px] mb-6 leading-none"

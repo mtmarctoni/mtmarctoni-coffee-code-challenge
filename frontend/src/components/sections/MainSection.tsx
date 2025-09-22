@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FilterType, CoffeeItem } from '@/types/Item'
-import { CoffeeGrid } from '@/components/CoffeeGrid'
-import { CoffeeFilter } from '@/components/CoffeeFilter'
-import Toast from '@/components/Toast';
+import { CoffeeGrid } from '@/components/coffee/CoffeeGrid'
+import { CoffeeFilter } from '@/components/coffee/CoffeeFilter'
+import Toast from '@/components/ui/Toast';
 
 interface Props {
   items: CoffeeItem[];

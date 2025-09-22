@@ -1,10 +1,8 @@
 import { apiBaseUrl } from "@/app/config";
 import { CoffeeItem } from "@/types/Item";
 
-const API = apiBaseUrl;
-
 export const fetchItems = async (): Promise<CoffeeItem[]> => {
-  const res = await fetch(`${API}/coffees`, {
+  const res = await fetch(`${apiBaseUrl}/coffees`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch coffees");
@@ -12,7 +10,7 @@ export const fetchItems = async (): Promise<CoffeeItem[]> => {
 };
 
 export const createCoffee = async (payload: Partial<CoffeeItem>) => {
-  const res = await fetch(`${API}/coffees`, {
+  const res = await fetch(`${apiBaseUrl}/coffees`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

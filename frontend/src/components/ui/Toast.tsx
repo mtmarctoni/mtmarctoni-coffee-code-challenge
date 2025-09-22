@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { ErrorIcon, CloseIcon } from "./icons";
+import { ErrorIcon, CloseIcon } from "../icons";
 import { ERROR_TTL } from "@/app/config";
 
 type ToastProps = {
