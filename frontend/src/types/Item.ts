@@ -2,7 +2,7 @@ import z from "zod";
 
 // validation with zod
 export const CoffeeCategorySchema = z.enum(["robusta", "arabica"], {
-  errorMap: () => ({ message: "Category must be 'robusta' or 'arabica'" }),
+  message: "Category must be 'robusta' or 'arabica'",
 });
 
 export const CreateCoffeeItemSchema = z.object({
@@ -33,7 +33,7 @@ export const CoffeeItemSchema = CreateCoffeeItemSchema.extend({
   id: z.number().int().positive(),
 });
 
-export const CoffeeCategory = CoffeeCategorySchema.Enum;
+export const CoffeeCategory = CoffeeCategorySchema.enum;
 
 export type CoffeeCategoryType = z.infer<typeof CoffeeCategorySchema>;
 export type CreateCoffeeItem = z.infer<typeof CreateCoffeeItemSchema>;
