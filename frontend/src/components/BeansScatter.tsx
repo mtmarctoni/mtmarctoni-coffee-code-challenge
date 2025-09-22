@@ -1,41 +1,38 @@
+import Image from 'next/image';
 import React from 'react';
 
 type Props = {
-  count?: number; // how many beans
-  size?: number; // px - uniform size for all beans
+  count?: number; // how many image
+  size?: number;
   seed?: number; // deterministic seed to tweak placement
-  animate?: boolean;
+  x0?: number;
+  y0?: number;
   className?: string;
 };
 
 export const BeansScatter: React.FC<Props> = ({
-  count = 30,
+  count = 10,
   size = 200,
   seed = 100,
-  animate = false,
+  x0 = 0,
+  y0 = 0,
   className = '',
 }) => {
-  // deterministic placement: use a golden-angle spiral to place items evenly but deterministically
-  // bias y toward the bottom of the container so more beans accumulate lower
   const items = Array.from({ length: count }).map((_, i) => {
-    const angle = (i * 137.508) + seed; // golden angle in degrees
-    const radius = 16 + (i % 6) * 8; // slightly larger rings for fewer, larger beans
+    const angle = (i * 180) + seed; // angle in degrees
     // convert polar to percent offsets around center
     const rad = (angle * Math.PI) / 180;
-    const x = 50 + Math.cos(rad) * radius; // percent
-    // push y toward bottom: base at 60% plus sin-based offset
-    const y = 60 + Math.sin(rad) * radius * 0.6;
-    const rot = ((i * 37 + seed * 11) % 90) - 45; // deterministic -45..44
-    const opacity = 0.7 + ((i % 3) * 0.08); // slight variation but deterministic
+    const x = x0 + (i / (count - 1)) * 100; // percent, evenly spaced
+    const y = y0 + Math.sin(rad) * 0.7; // percent, sine wave
+    const rot = ((i * 37 + seed * 11) % 90) - 45; // rotation between -45 and +44 degrees
 
-    return { x: Math.round(x), y: Math.round(y), rot, size, opacity };
+    return { x: Math.round(x), y: Math.round(y), rot, size };
   });
 
   return (
     <div
       aria-hidden
       className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
-      style={{ zIndex: 0 }}
     >
       {items.map((it, idx) => {
         const style: React.CSSProperties = {
@@ -44,23 +41,18 @@ export const BeansScatter: React.FC<Props> = ({
           top: `${it.y}%`,
           width: it.size,
           height: it.size,
-          transform: `translate(-50%, -50%) rotate(${it.rot}deg)`,
-          opacity: it.opacity,
-          transition: 'transform 600ms ease, opacity 600ms ease',
-          willChange: 'transform, opacity',
+          transform: `rotate(${it.rot}deg)`,
         };
 
-        const animClass = animate ? 'bean-animate' : '';
-
         return (
-          <img
-            key={idx}
+          <Image
             src="/coffe-beans-unit.webp"
-            alt=""
-            className={`select-none pointer-events-none ${animClass}`}
+            alt="Coffee Bean"
+            className={`select-none pointer-events-none `}
             style={style}
             width={it.size}
             height={it.size}
+            key={idx}
           />
         );
       })}
