@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: 'MVST Coffee - Premium Roasted Coffee',
     description: 'Choose a quality cup and create your own with MVST Coffee. Discover our exclusive collection of premium roasted coffee.',
@@ -54,7 +57,7 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  }
+  },
 }
 
 export default function RootLayout({
@@ -65,6 +68,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Primary Meta Tags */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
         {/* Structured Data for Local Business */}
         <script
           type="application/ld+json"
@@ -98,6 +105,7 @@ export default function RootLayout({
             })
           }}
         />
+
       </head>
       <body className={`bg-bg text-text`}>
         {children}
