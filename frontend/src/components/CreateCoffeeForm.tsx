@@ -172,6 +172,8 @@ export default function CreateCoffeeForm(): JSX.Element {
               value={title.value}
               onChange={title.onChange}
               required
+              name="name"
+              autocomplete="off"
             />
           </div>
 
@@ -184,6 +186,8 @@ export default function CreateCoffeeForm(): JSX.Element {
               type="number"
               rightSymbol="€"
               required
+              name="price"
+              autocomplete="off"
             />
           </div>
         </motion.div>
@@ -199,6 +203,8 @@ export default function CreateCoffeeForm(): JSX.Element {
             value={imageUrl.value}
             onChange={imageUrl.onChange}
             required
+              name="imageUrl"
+              autocomplete="off"
           />
         </motion.div>
 

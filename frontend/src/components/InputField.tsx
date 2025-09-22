@@ -9,6 +9,8 @@ type InputFieldBaseProps = {
   required?: boolean;
   rightSymbol?: string;
   className?: string;
+  name?: string;
+  autocomplete?: string;
 };
 
 type StringInputProps = InputFieldBaseProps & {
@@ -34,6 +36,8 @@ export default function InputField(props: Props) {
     type = "text",
     required = false,
     rightSymbol,
+    name,
+    autocomplete,
   } = props;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,7 +72,8 @@ export default function InputField(props: Props) {
 
   return (
     <div className={`w-full font-tertiary`}>
-      <label className="block text-sm text-muted mb-2">{label}</label>
+      <label className="block text-sm text-muted mb-2">{label}
+
       {type === "textarea" ? (
         <textarea
           className={`${inputClassName} min-h-[56px]`}
@@ -85,14 +90,17 @@ export default function InputField(props: Props) {
             onChange={handleChange}
             type={type === "number" ? "number" : "text"}
             required={required}
-                          step={type === "number" ? "0.01" : undefined}
-                          
+            step={type === "number" ? "0.01" : undefined}
+            name={name}
+            autoComplete={autocomplete}
           />
           {rightSymbol && (
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text text-sm">{rightSymbol}</span>
           )}
         </div>
-      )}
+        )}
+      </label>
+        
     </div>
   );
 }
