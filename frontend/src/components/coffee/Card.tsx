@@ -36,7 +36,7 @@ export const Card = ({
 
       <div className="flex flex-col items-center text-center p-6 md:p-10">
         {/* decorative image */}
-        <div className="w-full md:max-w-xs aspect-square relative overflow">
+        <div className="w-full md:max-w-xs aspect-square relative overflow justify-center items-center flex">
           {imageUrl.startsWith("/") ? (
             <Image
               src={imageUrl}

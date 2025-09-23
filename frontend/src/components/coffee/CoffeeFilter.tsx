@@ -62,10 +62,6 @@ export function CoffeeFilter({ filter, setFilter }: Props) {
                 className={`text-center w-full py-3 text-sm font-medium focus:outline-none cursor-pointer relative ${
                   active ? 'text-bg' : 'text-text'
                 }`}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -1
-                }}
                 whileTap={{ 
                   scale: 0.95,
                   y: 0
