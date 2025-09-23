@@ -1,5 +1,19 @@
 # Coffee and Tee List - MVST challenge Backend
 
+## Deployment
+
+The backend service and Postgres database are deployed on [Railway](https://railway.app/).
+
+Public API url: [mtmarctoni-coffee-code-challenge.up.railway.app](https://mtmarctoni-coffee-code-challenge.up.railway.app/coffees)
+
+## Features & Overview
+
+- **Backend**: Built with [NestJS](https://nestjs.com/).
+- **Unit tests**: Written with [Jest](https://jestjs.io/).
+- **End-to-end tests**: E2E testing with Jest and Supertest for API endpoints.
+- **Postgres database**: Uses [pg](https://node-postgres.com/) for database connectivity.
+- **Scripts**: Includes scripts for database reset and local development DB startup with Docker.
+
 ## Scripts
 
 The following scripts are here to help you get up and running in a development environment as quickly as possible.

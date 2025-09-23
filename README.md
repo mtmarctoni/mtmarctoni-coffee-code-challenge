@@ -1,6 +1,6 @@
 # MVST Challenge
 
-We're thrilled that you've made it to our MVST coding challenge! We are rooting for your success and hope to meet you in the challenge review! 🚀 If you have anything that we can help you with, just open an issue in the Github repo that was provided to you. 
+We're thrilled that you've made it to our MVST coding challenge! We are rooting for your success and hope to meet you in the challenge review! 🚀 If you have anything that we can help you with, just open an issue in the Github repo that was provided to you.
 
 ## How to get started
 
@@ -61,7 +61,7 @@ Before adding a new Coffee, you should validate if an existing record with the s
 7. Match the design in the Figma file.
 8. If you don't feel comfortable using the `app` folder introduced in Next.js 13, you are allowed to use the `page` folder.
 
-### 🔍 What we will check 
+### 🔍 What we will check
 
 To be transparent, these are some things we consider important in the challenge:
 
@@ -94,7 +94,7 @@ So you are finished and feel like showing us some more? Here are a few things th
 - The starter code won't start
 
   Check that you are using the correct node versions. We have provided an `.nvmrc` file so you can set it to Node 18 if you are using `nvm`. Also, make sure that you have docker installed if you want to use the DB starter script provided by us.
-  
+
 - Some project dependencies are out of date. Can I update them?
 
   Absolutely! Also ping us and let us know about this.
@@ -103,13 +103,56 @@ So you are finished and feel like showing us some more? Here are a few things th
 
 ---
 
+### Notes
+
+**Repository & Deployment:**  
+ Due to restricted permissions on the original MVST repository (no third party permissions and fork option disabled), I created a separate public repository under my own GitHub account to complete the challenge and deploy the application.
+
+For the official submission, I will create a Pull Request from a branch 'develop' inside the MVST repository, ensuring the code matches exactly. However, all deployments (live demos) will be from my own repository, as deployment permissions are not available on the MVST repo.
+
+**Live Deployments:**
+
+- Frontend: [https://mtmarctoni-coffee-code-challenge.vercel.app/](https://mtmarctoni-coffee-code-challenge.vercel.app/)
+- API: [https://mtmarctoni-coffee-code-challenge.up.railway.app/](https://mtmarctoni-coffee-code-challenge.up.railway.app/coffees)
+
+**Source Code:**
+
+- GitHub Repo: [https://github.com/mtmarctoni/mtmarctoni-coffee-code-challenge](https://github.com/mtmarctoni/mtmarctoni-coffee-code-challenge)
+
 ### What would you improve if given more time?
 
-Please fill
+- Improve SEO
+  - Add Google Analytics or similar to monitor
+  - add a 404 page
+  - add manifest.json
+  - dynamic meta tags based on the coffee list (SSR or SSG)
+- Better handling error
+  - if an image url is not valid
+  - better error messages for the user when fetching data fails
+- add CI/CD pipeline with github actions for every PR and push
+  - eslint for code quality
+  - unit testing
+  - e2e testing
+- better linting; add rules and typescript errors
+- add prettier
+- restrict cors and add rate limit to prevent abuse
+- add some basic analytics (for example with vercel analytics on the frontend)
+- refactor code; simplify components and use more custom hooks for logic
+- add database migrations
 
 ### How was your experience doing this challenge?
 
-Please fill
+Initially, when I first went through the challenge, I thought it would be straightforward since I've developed similar applications many times, especially with Next.js and API routes. However, my main concern was time management - ensuring I could deliver quality work within a reasonable timeframe.
+
+The most significant learning curve came from my tech stack architecture decision. Initially, I would have used Next.js for the full-stack application and deployed it to Vercel, which I know works seamlessly. However, seeing that MVST values NestJS expertise and noticing the initial commit structure with separate frontend and backend folders, I decided to embrace this as a learning opportunity. Since I'd need to learn NestJS if hired, I chose to separate the applications and implement the backend with NestJS.
+
+This decision required significant upfront investment in learning. Having never used NestJS before, I spent considerable time understanding its architecture, dependency injection patterns, and overall structure through official documentation and tutorials. Since it was a simple backend application, I managed to build it without any problems, but I feel like I didn't get the most of NestJS - I likely only scratched the surface of its powerful features like advanced dependency injection, guards, interceptors, and other enterprise-level capabilities.
+
+I also spent considerable time ensuring the implementation was pixel-perfect and fully responsive, paying close attention to design details and making sure the user experience was consistent across different screen sizes using Tailwind.
+
+Once I completed the backend architecture and styling challenges, the remaining development was quite straightforward - connecting the frontend to the API, implementing the core functionality and deploy.
+
+Overall, while I would have liked to implement additional features, particularly more comprehensive testing, the time constraints required me to prioritize core functionality. The experience was valuable for expanding my technical toolkit, especially with NestJS, though it highlighted the importance of better time estimation when learning new technologies during development.
 
 ---
 
